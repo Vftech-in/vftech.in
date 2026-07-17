@@ -3,68 +3,140 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="VeriForm Technologies — Solutions That Empower. IT infrastructure, procurement, cloud, cybersecurity, managed services and digital transformation." />
+  <meta name="theme-color" content="#030712" />
+  <meta name="author" content="VeriForm Technologies" />
+  
   <title>VeriForm Technologies — Solutions That Empower</title>
 
-  <!-- Tailwind CSS (official CDN) -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700;900&display=swap" rel="stylesheet">
 
-  <meta name="description" content="VeriForm Technologies — Solutions That Empower. IT infrastructure, procurement, cloud, cybersecurity, managed services and digital transformation." />
-  <meta name="theme-color" content="#030712" />
-
   <style>
-    :root{
+    :root {
       --accent: #06b6d4;
       --accent-2: #3b82f6;
       --bg-dark: #030712;
-      --card-bg: rgba(11,18,32,0.6);
+      --card-bg: rgba(11, 18, 32, 0.6);
       --muted: #94a3b8;
     }
 
-    html,body { height:100%; }
+    html,
+    body {
+      height: 100%;
+    }
+
     body {
       font-family: "DM Sans", system-ui, -apple-system, sans-serif;
       background:
-        radial-gradient(1400px 700px at 0% 0%, rgba(6,182,212,0.06), transparent),
-        radial-gradient(1000px 600px at 100% 70%, rgba(59,130,246,0.03), transparent),
+        radial-gradient(1400px 700px at 0% 0%, rgba(6, 182, 212, 0.06), transparent),
+        radial-gradient(1000px 600px at 100% 70%, rgba(59, 130, 246, 0.03), transparent),
         var(--bg-dark);
       color: #e6eef6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    .brand-serif { font-family: "Fraunces", serif; letter-spacing: -0.01em; }
-    .glass-panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); backdrop-filter: blur(10px); }
-    .glass-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.03); transition: transform .28s ease, box-shadow .28s ease; }
-    .glass-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(6,182,212,0.08); border-color: rgba(6,182,212,0.18); }
+    .brand-serif {
+      font-family: "Fraunces", serif;
+      letter-spacing: -0.01em;
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(10px);
+    }
+
+    .glass-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(6, 182, 212, 0.08);
+      border-color: rgba(6, 182, 212, 0.18);
+    }
 
     /* Reveal animation */
-    .reveal { opacity: 0; transform: translateY(18px); transition: all .7s cubic-bezier(.16,1,.3,1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-    /* small helpers */
-    .accent-underline { background: linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; color:transparent; }
-    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
-    a:focus { outline: 3px solid rgba(6,182,212,0.18); outline-offset: 3px; border-radius: 6px; }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    /* responsive hero min height */
-    .hero-min { min-height: calc(100vh - 96px); }
+    /* Utility classes */
+    .accent-underline {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
 
-    /* small table tweaks */
-    table th, table td { border-color: rgba(255,255,255,0.04); }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    a:focus-visible {
+      outline: 3px solid rgba(6, 182, 212, 0.18);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .hero-min {
+      min-height: calc(100vh - 96px);
+    }
+
+    table th,
+    table td {
+      border-color: rgba(255, 255, 255, 0.04);
+    }
+
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Tab content animation */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
   </style>
 </head>
+
 <body class="flex flex-col min-h-screen">
+
+  <!-- SKIP NAVIGATION -->
+  <a href="#main-content" class="sr-only">Skip to main content</a>
 
   <!-- NAVIGATION -->
   <header class="fixed top-4 left-0 right-0 z-50 px-4">
     <div class="max-w-7xl mx-auto">
-      <nav class="flex items-center justify-between py-3 px-6 glass-panel rounded-2xl shadow-2xl">
+      <nav class="flex items-center justify-between py-3 px-6 glass-panel rounded-2xl shadow-2xl" role="navigation" aria-label="Main navigation">
         <a href="#hero" class="flex items-center gap-3 group" aria-label="VeriForm Technologies home">
-          <!-- Logo (SVG) -->
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-slate-900 font-black brand-serif text-lg shadow-lg">
+          <!-- Logo -->
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-slate-900 font-black brand-serif text-lg shadow-lg" aria-hidden="true">
             VF
           </div>
           <div>
@@ -73,35 +145,41 @@
           </div>
         </a>
 
+        <!-- Desktop Navigation -->
         <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
-          <a href="#about" class="hover:text-cyan-300 transition nav-link">About</a>
-          <a href="#expertise" class="hover:text-cyan-300 transition nav-link">Expertise</a>
-          <a href="#capabilities" class="hover:text-cyan-300 transition nav-link">Capabilities</a>
-          <a href="#partners" class="hover:text-cyan-300 transition nav-link">Partners</a>
-          <a href="#sla" class="hover:text-cyan-300 transition nav-link">SLA Support</a>
+          <a href="#about" class="hover:text-cyan-300 transition">About</a>
+          <a href="#expertise" class="hover:text-cyan-300 transition">Expertise</a>
+          <a href="#capabilities" class="hover:text-cyan-300 transition">Capabilities</a>
+          <a href="#partners" class="hover:text-cyan-300 transition">Partners</a>
+          <a href="#sla" class="hover:text-cyan-300 transition">SLA Support</a>
           <a href="#contact" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-cyan-500 hover:text-slate-900 transition-all">Contact Console</a>
         </div>
 
-        <button id="menuBtn" class="lg:hidden p-2 rounded-xl bg-white/5 border border-white/5 text-white" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle navigation">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <!-- Mobile Menu Button -->
+        <button id="menuBtn" class="lg:hidden p-2 rounded-xl bg-white/5 border border-white/5 text-white hover:bg-white/10 transition" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle navigation">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
         </button>
 
-        <!-- Mobile menu -->
-        <div id="mobileMenu" class="hidden absolute left-4 right-4 top-full mt-3 p-4 glass-panel rounded-2xl flex flex-col gap-3 text-sm font-medium text-slate-300 lg:hidden shadow-2xl z-50" role="menu" aria-label="Mobile navigation">
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden absolute left-4 right-4 top-full mt-3 p-4 glass-panel rounded-2xl flex flex-col gap-3 text-sm font-medium text-slate-300 lg:hidden shadow-2xl z-50" role="navigation" aria-label="Mobile navigation">
           <a href="#about" class="py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">About</a>
           <a href="#expertise" class="py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Expertise</a>
           <a href="#capabilities" class="py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Capabilities</a>
           <a href="#partners" class="py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">Partners</a>
           <a href="#sla" class="py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white transition">SLA Support</a>
-          <a href="#contact" class="mt-2 py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-center font-bold text-slate-900 transition">Contact Console</a>
+          <a href="#contact" class="mt-2 py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-center font-bold text-slate-900 transition hover:opacity-90">Contact Console</a>
         </div>
       </nav>
     </div>
   </header>
 
-  <!-- HERO -->
-  <main class="flex-auto">
-    <section id="hero" class="pt-32 pb-20 px-4 hero-min">
+  <!-- MAIN CONTENT -->
+  <main id="main-content" class="flex-auto">
+    
+    <!-- HERO -->
+    <section id="hero" class="pt-32 pb-20 px-4 hero-min" aria-label="Hero section">
       <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-7 space-y-6">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-semibold text-cyan-300 uppercase tracking-widest">
@@ -110,7 +188,7 @@
 
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight brand-serif">
             Technology That Delivers.
-            <br>
+            <br />
             <span class="accent-underline">Solutions That Empower.</span>
           </h1>
 
@@ -119,18 +197,31 @@
           </p>
 
           <div class="flex flex-wrap gap-4 pt-2">
-            <a href="#contact" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-900 font-bold shadow-lg hover:opacity-95 transition">Initiate Strategy Audit</a>
-            <a href="#capabilities" class="px-6 py-3.5 rounded-xl bg-white/5 border border-white/10 font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition">Explore Capabilities</a>
+            <a href="#contact" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-900 font-bold shadow-lg hover:opacity-95 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400">
+              Initiate Strategy Audit
+            </a>
+            <a href="#capabilities" class="px-6 py-3.5 rounded-xl bg-white/5 border border-white/10 font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400">
+              Explore Capabilities
+            </a>
           </div>
 
           <div class="pt-6 border-t border-white/5 flex flex-wrap gap-y-3 gap-x-8 text-xs font-medium text-slate-400">
-            <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> <strong>HQ:</strong> Bengaluru, India</div>
-            <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> <strong>Voice:</strong> <a href="tel:+918095458550" class="text-slate-200 hover:underline">+91 80954 58550</a></div>
-            <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span> <strong>Gateway:</strong> <a href="mailto:info@vftech.in" class="text-slate-200 hover:underline">info@vftech.in</a></div>
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+              <strong>HQ:</strong> Bengaluru, India
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+              <strong>Voice:</strong> <a href="tel:+918095458550" class="text-slate-200 hover:underline">+91 80954 58550</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+              <strong>Gateway:</strong> <a href="mailto:info@vftech.in" class="text-slate-200 hover:underline">info@vftech.in</a>
+            </div>
           </div>
         </div>
 
-        <!-- Visual card -->
+        <!-- Visual Card -->
         <div class="lg:col-span-5">
           <div class="p-6 rounded-3xl glass-panel relative overflow-hidden border-white/10 shadow-2xl">
             <div class="absolute -top-24 -right-24 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl"></div>
@@ -141,27 +232,34 @@
                   <div class="text-[10px] uppercase font-bold tracking-widest text-cyan-300">Security Nodes</div>
                   <div class="text-white font-bold text-sm">Adaptive Edge Core</div>
                 </div>
-                <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" aria-hidden="true"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></div>
               </div>
 
               <div class="flex justify-center items-center py-4">
-                <!-- Simple SVG illustration -->
+                <!-- SVG Illustration -->
                 <svg width="140" height="140" viewBox="0 0 24 24" fill="none" class="text-cyan-400/30" stroke="currentColor" stroke-width="0.9" aria-hidden="true">
                   <defs>
                     <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stop-color="#06b6d4"/><stop offset="100%" stop-color="#3b82f6"/>
+                      <stop offset="0%" stop-color="#06b6d4" />
+                      <stop offset="100%" stop-color="#3b82f6" />
                     </linearGradient>
                   </defs>
-                  <polygon points="12 2 2 7 12 12 22 7" stroke="url(#g1)"/>
-                  <polygon points="2 17 12 22 22 17" stroke="currentColor"/>
-                  <polygon points="2 12 12 17 22 12" stroke="currentColor"/>
+                  <polygon points="12 2 2 7 12 12 22 7" stroke="url(#g1)" />
+                  <polygon points="2 17 12 22 22 17" stroke="currentColor" />
+                  <polygon points="2 12 12 17 22 12" stroke="currentColor" />
                 </svg>
               </div>
 
               <div class="grid grid-cols-3 gap-2 text-center text-[10px] text-slate-400 font-mono">
-                <div class="p-1.5 rounded bg-white/5 border border-white/5"><span class="block text-white font-bold text-xs">AZURE</span> ARCH</div>
-                <div class="p-1.5 rounded bg-white/5 border border-white/5"><span class="block text-cyan-300 font-bold text-xs">SOC</span> MONITOR</div>
-                <div class="p-1.5 rounded bg-white/5 border border-white/5"><span class="block text-white font-bold text-xs">SLA-2H</span> RESOLVE</div>
+                <div class="p-1.5 rounded bg-white/5 border border-white/5">
+                  <span class="block text-white font-bold text-xs">AZURE</span> ARCH
+                </div>
+                <div class="p-1.5 rounded bg-white/5 border border-white/5">
+                  <span class="block text-cyan-300 font-bold text-xs">SOC</span> MONITOR
+                </div>
+                <div class="p-1.5 rounded bg-white/5 border border-white/5">
+                  <span class="block text-white font-bold text-xs">SLA-2H</span> RESOLVE
+                </div>
               </div>
             </div>
 
@@ -181,7 +279,7 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="w-full py-20 px-4">
+    <section id="about" class="w-full py-20 px-4" aria-label="About section">
       <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         <div class="reveal">
           <h2 class="text-3xl font-bold brand-serif mb-4">About VeriForm Technologies</h2>
@@ -194,14 +292,14 @@
         </div>
 
         <div class="reveal">
-          <!-- Placeholder image (replace with real image) -->
+          <!-- Illustration -->
           <div class="w-full h-80 rounded-2xl overflow-hidden glass-card">
-            <svg class="w-full h-full object-cover" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration">
-              <rect width="1200" height="600" fill="#071026"/>
+            <svg class="w-full h-full object-cover" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abstract technology illustration">
+              <rect width="1200" height="600" fill="#071026" />
               <g fill="none" stroke="#0ea5e9" stroke-opacity="0.08" stroke-width="2">
-                <circle cx="200" cy="200" r="120"/>
-                <circle cx="420" cy="320" r="160"/>
-                <circle cx="820" cy="180" r="140"/>
+                <circle cx="200" cy="200" r="120" />
+                <circle cx="420" cy="320" r="160" />
+                <circle cx="820" cy="180" r="140" />
               </g>
             </svg>
           </div>
@@ -210,11 +308,10 @@
     </section>
 
     <!-- EXPERTISE -->
-    <section id="expertise" class="w-full py-16 px-4">
+    <section id="expertise" class="w-full py-16 px-4" aria-label="Expertise section">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-2xl font-bold brand-serif text-center mb-8">Our Expertise</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <!-- Repeatable cards -->
           <div class="p-6 rounded-2xl glass-card reveal">
             <h3 class="font-semibold text-white mb-2">IT Infrastructure Solutions</h3>
             <p class="text-slate-300 text-sm">Servers, storage, virtualization, data center modernization and backup solutions.</p>
@@ -258,36 +355,46 @@
       </div>
     </section>
 
-    <!-- CAPABILITIES (tabs) -->
-    <section id="capabilities" class="w-full py-16 px-4">
+    <!-- CAPABILITIES (Tabs) -->
+    <section id="capabilities" class="w-full py-16 px-4" aria-label="Capabilities section">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-2xl font-bold brand-serif text-center mb-8">Capabilities</h2>
 
         <div class="flex flex-col md:flex-row gap-6">
-          <div class="md:w-1/4 space-y-3">
-            <button class="tab-btn w-full text-left px-4 py-3 rounded-xl bg-white/5 text-slate-200 font-semibold" data-tab="infra">IT Infrastructure</button>
-            <button class="tab-btn w-full text-left px-4 py-3 rounded-xl bg-white/5 text-slate-200 font-semibold" data-tab="cloud">Cloud Services</button>
-            <button class="tab-btn w-full text-left px-4 py-3 rounded-xl bg-white/5 text-slate-200 font-semibold" data-tab="security">Cybersecurity</button>
-            <button class="tab-btn w-full text-left px-4 py-3 rounded-xl bg-white/5 text-slate-200 font-semibold" data-tab="managed">Managed Services</button>
+          <!-- Tab Buttons -->
+          <div class="md:w-1/4 space-y-3" role="tablist">
+            <button class="tab-btn w-full text-left px-4 py-3 rounded-xl bg-white/5 text-slate-200 font-semibold hover:bg-white/10 transition" data-tab="infra" role="tab" aria-selected="true" aria-controls="infra-panel">
+              IT Infrastructure
+            </button>
+            <button class="tab-btn w-full text-left px-4 py-3 rounded-xl bg-white/5 text-slate-200 font-semibold hover:bg-white/10 transition" data-tab="cloud" role="tab" aria-selected="false" aria-controls="cloud-panel">
+              Cloud Services
+            </button>
+            <button class="tab-btn w-full text-left px-4 py-3 rounded-xl bg-white/5 text-slate-200 font-semibold hover:bg-white/10 transition" data-tab="security" role="tab" aria-selected="false" aria-controls="security-panel">
+              Cybersecurity
+            </button>
+            <button class="tab-btn w-full text-left px-4 py-3 rounded-xl bg-white/5 text-slate-200 font-semibold hover:bg-white/10 transition" data-tab="managed" role="tab" aria-selected="false" aria-controls="managed-panel">
+              Managed Services
+            </button>
           </div>
 
-          <div class="md:flex-1">
-            <div id="infra" class="tab-content active p-6 rounded-2xl glass-card">
+          <!-- Tab Content -->
+          <div class="md:flex-1" role="tabpanel">
+            <div id="infra-panel" class="tab-content active p-6 rounded-2xl glass-card">
               <h3 class="text-xl font-bold mb-2">IT Infrastructure</h3>
               <p class="text-slate-300">Servers & workstations, storage, virtualization, data center solutions, backup & disaster recovery, asset management and modernization.</p>
             </div>
 
-            <div id="cloud" class="tab-content p-6 rounded-2xl glass-card">
+            <div id="cloud-panel" class="tab-content p-6 rounded-2xl glass-card">
               <h3 class="text-xl font-bold mb-2">Cloud Services</h3>
               <p class="text-slate-300">Microsoft Azure, Microsoft 365, AWS, Google Cloud, cloud migration, hybrid deployments and cloud backup solutions.</p>
             </div>
 
-            <div id="security" class="tab-content p-6 rounded-2xl glass-card">
+            <div id="security-panel" class="tab-content p-6 rounded-2xl glass-card">
               <h3 class="text-xl font-bold mb-2">Cybersecurity</h3>
               <p class="text-slate-300">Endpoint security, firewall solutions, security assessments, identity & access management, monitoring and awareness programs.</p>
             </div>
 
-            <div id="managed" class="tab-content p-6 rounded-2xl glass-card">
+            <div id="managed-panel" class="tab-content p-6 rounded-2xl glass-card">
               <h3 class="text-xl font-bold mb-2">Managed Services</h3>
               <p class="text-slate-300">24×7 monitoring, helpdesk, preventive maintenance, AMCs, onsite & remote support and security operations support.</p>
             </div>
@@ -297,10 +404,12 @@
     </section>
 
     <!-- PARTNERS -->
-    <section id="partners" class="w-full py-16 px-4 bg-slate-900/30">
+    <section id="partners" class="w-full py-16 px-4 bg-slate-900/30" aria-label="Partners section">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-2xl font-bold brand-serif text-center mb-6">Technology Ecosystem</h2>
-        <p class="text-center text-slate-300 mb-8 max-w-3xl mx-auto">We partner with leading global manufacturers and software providers to deliver reliable, scalable and future-ready solutions.</p>
+        <p class="text-center text-slate-300 mb-8 max-w-3xl mx-auto">
+          We partner with leading global manufacturers and software providers to deliver reliable, scalable and future-ready solutions.
+        </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="p-6 rounded-2xl glass-card">
@@ -337,12 +446,12 @@
     </section>
 
     <!-- SLA -->
-    <section id="sla" class="w-full py-16 px-4">
+    <section id="sla" class="w-full py-16 px-4" aria-label="Service Level Agreement section">
       <div class="max-w-5xl mx-auto">
         <h2 class="text-2xl font-bold brand-serif text-center mb-8">Service Level Agreement (SLA)</h2>
 
         <div class="overflow-x-auto rounded-2xl glass-card p-6">
-          <table class="w-full text-sm table-auto">
+          <table class="w-full text-sm table-auto" role="table" aria-label="SLA details">
             <thead>
               <tr class="text-left text-slate-300">
                 <th class="p-4 font-semibold">Priority</th>
@@ -375,47 +484,67 @@
           </table>
         </div>
 
-        <div class="mt-6 text-slate-300">
-          <p><strong>SLA Includes:</strong> Remote technical support, onsite engineer support, preventive maintenance visits, health check reports, asset documentation, escalation management, replacement coordination, warranty support.</p>
+        <div class="mt-6 text-slate-300 space-y-2">
+          <p>
+            <strong>SLA Includes:</strong> Remote technical support, onsite engineer support, preventive maintenance visits, health check reports, asset documentation, escalation management, replacement coordination, warranty support.
+          </p>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="w-full py-16 px-4 bg-gradient-to-b from-transparent to-black/20">
+    <section id="contact" class="w-full py-16 px-4 bg-gradient-to-b from-transparent to-black/20" aria-label="Contact section">
       <div class="max-w-5xl mx-auto">
         <h2 class="text-2xl font-bold brand-serif text-center mb-6">Contact Us</h2>
 
         <div class="grid md:grid-cols-2 gap-8">
           <div class="bg-slate-900/40 rounded-2xl p-8 glass-card">
             <h3 class="text-xl font-semibold mb-3">VERIFORM TECHNOLOGIES</h3>
-            <p class="text-slate-300 mb-2"><strong>Corporate Office:</strong> Bengaluru, Karnataka, India</p>
-            <p class="text-slate-300 mb-2"><strong>Phone:</strong> <a href="tel:+918095458550" class="text-slate-100 hover:underline">+91 80954 58550</a></p>
-            <p class="text-slate-300 mb-2"><strong>Email:</strong> <a href="mailto:info@vftech.in" class="text-slate-100 hover:underline">info@vftech.in</a></p>
-            <p class="text-slate-300 mb-2"><strong>Website:</strong> <a href="https://www.vftech.in" class="text-slate-100 hover:underline" target="_blank" rel="noopener">www.vftech.in</a></p>
+            <div class="space-y-2">
+              <p class="text-slate-300">
+                <strong>Corporate Office:</strong> Bengaluru, Karnataka, India
+              </p>
+              <p class="text-slate-300">
+                <strong>Phone:</strong> <a href="tel:+918095458550" class="text-slate-100 hover:underline">+91 80954 58550</a>
+              </p>
+              <p class="text-slate-300">
+                <strong>Email:</strong> <a href="mailto:info@vftech.in" class="text-slate-100 hover:underline">info@vftech.in</a>
+              </p>
+              <p class="text-slate-300">
+                <strong>Website:</strong> <a href="https://www.vftech.in" class="text-slate-100 hover:underline" target="_blank" rel="noopener noreferrer">www.vftech.in</a>
+              </p>
+            </div>
             <p class="text-slate-400 mt-4 text-sm">Business Hours: Mon - Sat 9:00 AM - 6:30 PM</p>
           </div>
 
           <div class="bg-slate-900/40 rounded-2xl p-8 glass-card">
             <h3 class="text-xl font-semibold mb-3">Connect With Us</h3>
             <div class="space-y-3">
-              <a href="https://www.linkedin.com/company/veriform-technologies" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-slate-300 hover:text-cyan-300">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-cyan-300"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4v12h-4zM8.5 8h3.8v1.6h.1c.5-.9 1.8-1.8 3.7-1.8 4 0 4.7 2.6 4.7 6v7.2h-4v-6.4c0-1.5 0-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V20h-4z"/></svg>
+              <a href="https://www.linkedin.com/company/veriform-technologies" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-slate-300 hover:text-cyan-300 transition">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4v12h-4zM8.5 8h3.8v1.6h.1c.5-.9 1.8-1.8 3.7-1.8 4 0 4.7 2.6 4.7 6v7.2h-4v-6.4c0-1.5 0-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V20h-4z" />
+                </svg>
                 <span>LinkedIn</span>
               </a>
 
-              <a href="https://www.facebook.com/veriformtechnologies" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-slate-300 hover:text-cyan-300">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.5 9.9v-7h-2.2v-2.9h2.2V9.4c0-2.2 1.3-3.4 3.3-3.4.95 0 1.95.17 1.95.17v2.1h-1.07c-1.05 0-1.38.66-1.38 1.34v1.6h2.35l-.38 2.9h-1.97v7A10 10 0 0022 12z"/></svg>
+              <a href="https://www.facebook.com/veriformtechnologies" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-slate-300 hover:text-cyan-300 transition">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M22 12a10 10 0 10-11.5 9.9v-7h-2.2v-2.9h2.2V9.4c0-2.2 1.3-3.4 3.3-3.4.95 0 1.95.17 1.95.17v2.1h-1.07c-1.05 0-1.38.66-1.38 1.34v1.6h2.35l-.38 2.9h-1.97v7A10 10 0 0022 12z" />
+                </svg>
                 <span>Facebook</span>
               </a>
 
-              <a href="https://www.instagram.com/veriformtechnologies" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-slate-300 hover:text-cyan-300">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 6.2A4.8 4.8 0 1016.8 13 4.8 4.8 0 0012 8.2zM18.5 6.1a1.1 1.1 0 11-1.1-1.1 1.1 1.1 0 011.1 1.1z"/></svg>
+              <a href="https://www.instagram.com/veriformtechnologies" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-slate-300 hover:text-cyan-300 transition">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 6.2A4.8 4.8 0 1016.8 13 4.8 4.8 0 0012 8.2zM18.5 6.1a1.1 1.1 0 11-1.1-1.1 1.1 1.1 0 011.1 1.1z" />
+                </svg>
                 <span>Instagram</span>
               </a>
 
-              <a href="https://x.com/Vftech_in" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-slate-300 hover:text-cyan-300">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.6.3-1.2.5-1.9.6.7-.4 1.2-1 1.4-1.8-.6.4-1.3.7-2.1.9C18.9 4.7 17.9 4 16.7 4c-1.8 0-3.2 1.6-2.9 3.3C11.3 7 8.6 5.6 6.6 3.6 5.1 5.1 6 7.6 7.9 8.4c-.5 0-1-.2-1.4-.4v.1c0 1.6 1.1 3 2.6 3.3-.5.1-1 .2-1.5.1.4 1.3 1.6 2.3 3 2.3C9.6 17 7.6 17.7 5.5 17.4c2 1.3 4.4 2 6.9 2 8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.7 1.6-1.6 2.2-2.6-.8.4-1.6.7-2.5.8z"/></svg>
+              <a href="https://x.com/Vftech_in" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-slate-300 hover:text-cyan-300 transition">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M22 5.9c-.6.3-1.2.5-1.9.6.7-.4 1.2-1 1.4-1.8-.6.4-1.3.7-2.1.9C18.9 4.7 17.9 4 16.7 4c-1.8 0-3.2 1.6-2.9 3.3C11.3 7 8.6 5.6 6.6 3.6 5.1 5.1 6 7.6 7.9 8.4c-.5 0-1-.2-1.4-.4v.1c0 1.6 1.1 3 2.6 3.3-.5.1-1 .2-1.5.1.4 1.3 1.6 2.3 3 2.3C9.6 17 7.6 17.7 5.5 17.4c2 1.3 4.4 2 6.9 2 8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.7 1.6-1.6 2.2-2.6-.8.4-1.6.7-2.5.8z" />
+                </svg>
                 <span>X (Twitter)</span>
               </a>
             </div>
@@ -426,7 +555,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="w-full py-8 px-4">
+  <footer class="w-full py-8 px-4 border-t border-white/5">
     <div class="max-w-7xl mx-auto text-center text-slate-400">
       <p class="font-semibold">© <span id="year"></span> VeriForm Technologies. All rights reserved.</p>
       <p class="mt-2 text-sm">Solutions That Empower. Technology That Delivers.</p>
@@ -441,6 +570,7 @@
     // Mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
+
     menuBtn.addEventListener('click', () => {
       const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
       menuBtn.setAttribute('aria-expanded', String(!expanded));
@@ -448,49 +578,94 @@
     });
 
     // Close mobile menu on link click
-    document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
 
     // Tab controller
     function switchTab(tabId, btn) {
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('bg-cyan-500','text-slate-900'));
-      const target = document.getElementById(tabId);
-      if (target) target.classList.add('active');
-      if (btn) { btn.classList.add('bg-cyan-500','text-slate-900'); }
+      // Hide all tab panels
+      document.querySelectorAll('[role="tabpanel"] .tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+
+      // Update button states
+      document.querySelectorAll('[role="tab"]').forEach(tab => {
+        tab.setAttribute('aria-selected', 'false');
+        tab.classList.remove('bg-cyan-500', 'text-slate-900');
+      });
+
+      // Show selected tab panel
+      const panel = document.getElementById(tabId + '-panel');
+      if (panel) {
+        panel.classList.add('active');
+      }
+
+      // Update button state
+      if (btn) {
+        btn.setAttribute('aria-selected', 'true');
+        btn.classList.add('bg-cyan-500', 'text-slate-900');
+      }
     }
 
+    // Tab button event listeners
     document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
         const tab = btn.getAttribute('data-tab');
         switchTab(tab, btn);
+      });
+
+      // Keyboard navigation
+      btn.addEventListener('keydown', (e) => {
+        const buttons = Array.from(document.querySelectorAll('.tab-btn'));
+        const currentIndex = buttons.indexOf(btn);
+        let nextBtn = null;
+
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          nextBtn = buttons[(currentIndex + 1) % buttons.length];
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          nextBtn = buttons[(currentIndex - 1 + buttons.length) % buttons.length];
+        }
+
+        if (nextBtn) {
+          nextBtn.focus();
+          nextBtn.click();
+        }
       });
     });
 
     // Initialize first tab active style
     const firstTabBtn = document.querySelector('.tab-btn');
-    if (firstTabBtn) firstTabBtn.classList.add('bg-cyan-500','text-slate-900');
+    if (firstTabBtn) {
+      firstTabBtn.setAttribute('aria-selected', 'true');
+      firstTabBtn.classList.add('bg-cyan-500', 'text-slate-900');
+    }
 
     // IntersectionObserver for reveal animations
-    const observer = new IntersectionObserver((entries, obs) => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Simple keyboard accessibility: close mobile menu with Escape
+    // Close mobile menu with Escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (!mobileMenu.classList.contains('hidden')) {
-          mobileMenu.classList.add('hidden');
-          menuBtn.setAttribute('aria-expanded', 'false');
-        }
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
       }
     });
   </script>
 </body>
+
 </html>
