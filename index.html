@@ -16,7 +16,7 @@
       --card:#0b1220;   /* deep card bg */
       --glass: rgba(255,255,255,0.04);
     }
-    html,body{height:100%}
+    html,body{height:100%; scroll-behavior: smooth;}
     body{
       font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       background: radial-gradient(1200px 600px at 10% 10%, rgba(6,11,20,0.6), transparent),
@@ -36,9 +36,11 @@
       transition: transform .45s cubic-bezier(.2,.9,.3,1), box-shadow .3s;
     }
     .floating:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(2,6,23,0.6); }
-    /* simple fade-in */
-    .reveal { opacity:0; transform: translateY(8px); transition: all .6s ease; }
+    
+    /* Scroll reveal animation base */
+    .reveal { opacity:0; transform: translateY(20px); transition: all .8s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal.visible { opacity:1; transform: translateY(0); }
+    
     /* responsive hero image placeholder */
     .hero-visual { background: linear-gradient(135deg, rgba(6,11,20,0.6), rgba(3,7,18,0.2)); border-radius: 12px; border: 1px solid rgba(255,255,255,0.03); }
     /* small utilities */
@@ -46,85 +48,96 @@
     a { text-decoration: none; }
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col pt-24">
 
   <!-- NAV -->
   <header class="w-full fixed top-4 left-0 z-50">
     <div class="max-w-7xl mx-auto px-4">
-      <nav class="flex items-center justify-between py-3 px-4 glass rounded-xl shadow-sm">
+      <nav class="flex items-center justify-between py-3 px-4 glass rounded-xl shadow-sm relative">
         <a href="#hero" class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-slate-900 font-bold brand">VF</div>
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-slate-900 font-bold brand text-lg">VF</div>
           <div>
-            <div class="text-white font-semibold brand">VeriForm Technologies</div>
-            <div class="text-xs muted">Solutions That Empower · Technology That Delivers</div>
+            <div class="text-white font-semibold brand text-sm sm:text-base">VeriForm Technologies</div>
+            <div class="text-[10px] sm:text-xs muted hidden sm:block">Solutions That Empower · Technology That Delivers</div>
           </div>
         </a>
 
+        <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center gap-6 text-sm muted">
           <a href="#about" class="hover:text-white transition">About</a>
           <a href="#services" class="hover:text-white transition">Services</a>
           <a href="#partners" class="hover:text-white transition">Partners</a>
           <a href="#industries" class="hover:text-white transition">Industries</a>
-          <a href="#contact" class="btn btn-ghost px-3 py-2 rounded-md glass text-sm">Contact</a>
+          <a href="#contact" class="px-4 py-2 rounded-md glass text-sm hover:text-white transition border border-white/10">Contact</a>
         </div>
 
+        <!-- Mobile Menu Button -->
         <div class="md:hidden">
-          <button id="menuBtn" class="p-2 rounded-md glass">
+          <button id="menuBtn" class="p-2 rounded-md glass transition hover:bg-white/10" aria-label="Toggle Navigation Menu">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-white"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu Links -->
+        <div id="mobileMenu" class="hidden absolute top-full left-0 right-0 mt-2 p-4 glass rounded-xl flex flex-col gap-4 text-sm muted md:hidden z-50">
+          <a href="#about" class="hover:text-white transition py-1">About</a>
+          <a href="#services" class="hover:text-white transition py-1">Services</a>
+          <a href="#partners" class="hover:text-white transition py-1">Partners</a>
+          <a href="#industries" class="hover:text-white transition py-1">Industries</a>
+          <a href="#contact" class="px-4 py-2 rounded-md glass text-center text-sm text-white hover:bg-white/10 transition border border-white/10">Contact</a>
         </div>
       </nav>
     </div>
   </header>
 
   <!-- HERO -->
-  <section id="hero" class="pt-28 pb-16">
+  <section id="hero" class="py-12 md:py-20">
     <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
       <div class="space-y-6">
-        <p class="text-sm uppercase muted tracking-wider">Trusted IT Infrastructure & Digital Transformation</p>
-        <h1 class="text-4xl md:text-5xl font-extrabold brand leading-tight">
+        <p class="text-xs sm:text-sm uppercase muted tracking-wider font-medium">Trusted IT Infrastructure & Digital Transformation</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold brand leading-tight text-white">
           VeriForm Technologies
         </h1>
-        <p class="text-xl muted max-w-2xl">
+        <p class="text-lg md:text-xl muted max-w-2xl">
           Delivering reliable technology, procurement & digital transformation solutions that secure and scale your business.
         </p>
 
-        <div class="flex gap-4 items-center">
-          <a href="#contact" class="inline-flex items-center gap-3 px-5 py-3 rounded-lg btn-primary font-semibold shadow-lg">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 8.5v7a2 2 0 0 0 2 2h14" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 8.5V6a5 5 0 0 1 10 0v2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="flex flex-wrap gap-4 items-center">
+          <a href="#contact" class="inline-flex items-center gap-3 px-5 py-3 rounded-lg btn-primary font-semibold shadow-lg hover:opacity-90 transition">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-slate-900"><path d="M3 8.5v7a2 2 0 0 0 2 2h14" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 8.5V6a5 5 0 0 1 10 0v2.5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Get a Consultation
           </a>
-          <a href="#services" class="px-4 py-3 rounded-lg glass text-sm muted hover:text-white transition">Our Services</a>
+          <a href="#services" class="px-5 py-3 rounded-lg glass text-sm font-medium text-slate-300 hover:text-white transition">Our Services</a>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 text-xs muted">
           <div class="glass rounded-lg p-3 text-center">
             <div class="font-semibold text-white">Cloud</div>
-            <div class="muted">Azure · AWS · M365</div>
+            <div class="muted mt-1">Azure · AWS · M365</div>
           </div>
           <div class="glass rounded-lg p-3 text-center">
             <div class="font-semibold text-white">Cybersecurity</div>
-            <div class="muted">Assessment · SOC</div>
+            <div class="muted mt-1">Assessment · SOC</div>
           </div>
           <div class="glass rounded-lg p-3 text-center">
             <div class="font-semibold text-white">Procurement</div>
-            <div class="muted">Hardware · Licensing</div>
+            <div class="muted mt-1">Hardware · Licensing</div>
           </div>
           <div class="glass rounded-lg p-3 text-center">
             <div class="font-semibold text-white">Managed Services</div>
-            <div class="muted">24×7 Support</div>
+            <div class="muted mt-1">24×7 Support</div>
           </div>
         </div>
 
-        <div class="mt-6 text-sm muted">
-          <span class="inline-block mr-4"><strong class="text-white">Phone:</strong> +91 80954 58550</span>
-          <span class="inline-block"><strong class="text-white">Email:</strong> info@vftech.in</span>
+        <div class="mt-6 text-sm muted flex flex-wrap gap-x-6 gap-y-2">
+          <span><strong class="text-white font-medium">Phone:</strong> +91 80954 58550</span>
+          <span><strong class="text-white font-medium">Email:</strong> info@vftech.in</span>
         </div>
       </div>
 
       <!-- Visual / Illustration -->
       <div class="hero-visual p-6 rounded-xl shadow-lg">
-        <div class="w-full h-64 rounded-lg bg-[linear-gradient(135deg,#06202b,#071028)] flex items-center justify-center text-center">
+        <div class="w-full h-64 rounded-lg bg-[linear-gradient(135deg,#06202b,#071028)] flex items-center justify-center text-center p-4">
           <div class="space-y-3">
             <svg width="72" height="72" viewBox="0 0 24 24" fill="none" class="mx-auto"><path d="M3 12h18" stroke="#06b6d4" stroke-width="1.6" stroke-linecap="round"/><path d="M12 3v18" stroke="#60a5fa" stroke-width="1.6" stroke-linecap="round"/></svg>
             <div class="text-white font-semibold text-lg">Secure · Scalable · Future-ready</div>
@@ -132,14 +145,14 @@
           </div>
         </div>
 
-        <div class="mt-6 grid grid-cols-2 gap-4">
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="card p-4 rounded-lg floating reveal">
-            <div class="text-sm muted">SLA</div>
-            <div class="font-semibold text-white">Critical response within 2 hours</div>
+            <div class="text-xs text-cyan-400 font-bold tracking-wider uppercase">SLA Commitment</div>
+            <div class="font-semibold text-white mt-1">Critical response within 2 hours</div>
           </div>
           <div class="card p-4 rounded-lg floating reveal">
-            <div class="text-sm muted">Partners</div>
-            <div class="font-semibold text-white">Microsoft · Cisco · Dell · Fortinet</div>
+            <div class="text-xs text-blue-400 font-bold tracking-wider uppercase">Top Ecosystem Partners</div>
+            <div class="font-semibold text-white mt-1">Microsoft · Cisco · Dell · Fortinet</div>
           </div>
         </div>
       </div>
@@ -147,239 +160,17 @@
   </section>
 
   <main class="flex-1">
-    <!-- ABOUT -->
-    <section id="about" class="py-16">
-      <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h2 class="text-2xl font-bold brand">About VeriForm Technologies</h2>
-          <p class="mt-4 muted max-w-2xl">
-            VeriForm Technologies is a trusted provider of IT infrastructure, enterprise procurement, cloud solutions, cybersecurity, managed services, and digital transformation consulting. We help organizations build secure, scalable, and future-ready technology environments that drive business growth and operational excellence.
+    
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 border-t border-white/5 bg-slate-950/20">
+      <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <h2 class="text-3xl font-bold brand text-white">About VeriForm Technologies</h2>
+          <div class="w-16 h-1 bg-cyan-500 mt-3 rounded"></div>
+          <p class="mt-6 text-slate-300 leading-relaxed">
+            VeriForm Technologies is a trusted provider of enterprise IT infrastructure, hardware procurement, cloud architectures, advanced cybersecurity implementations, and end-to-end managed support ecosystems.
           </p>
-
-          <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <li class="glass p-4 rounded-lg">
-              <div class="text-sm muted">Expertise</div>
-              <div class="font-semibold text-white">Infrastructure · Cloud · Security</div>
-            </li>
-            <li class="glass p-4 rounded-lg">
-              <div class="text-sm muted">Industries</div>
-              <div class="font-semibold text-white">Healthcare · Education · Enterprise</div>
-            </li>
-            <li class="glass p-4 rounded-lg">
-              <div class="text-sm muted">Procurement</div>
-              <div class="font-semibold text-white">OEMs · Licensing · Vendor Mgmt</div>
-            </li>
-            <li class="glass p-4 rounded-lg">
-              <div class="text-sm muted">Support</div>
-              <div class="font-semibold text-white">AMC · Onsite & Remote</div>
-            </li>
-          </ul>
+          <p class="mt-4 text-slate-400 leading-relaxed">
+            We focus on bridging business-critical challenges with adaptive modern technology stacks, ensuring operations remain highly resilient, protected, and fluidly adaptable to digital evolution.
+          </p>
         </div>
-
-        <div class="rounded-xl overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=7b8b6b6b6b6b6b6b6b6b6b6b6b6b6b6" alt="IT infrastructure" class="w-full h-80 object-cover rounded-xl shadow-lg">
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services" class="py-16 bg-[linear-gradient(180deg,rgba(255,255,255,0.01),transparent)]">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-2xl font-bold brand text-center">Our Services</h2>
-        <p class="text-center muted mt-2">End-to-end solutions from procurement to managed services and cybersecurity.</p>
-
-        <div class="mt-8 grid md:grid-cols-3 gap-6">
-          <div class="card p-6 rounded-xl floating reveal">
-            <h3 class="font-semibold text-white">Technology Procurement</h3>
-            <p class="muted mt-2 text-sm">IT hardware procurement, software licensing, vendor & OEM coordination, procurement consulting.</p>
-          </div>
-          <div class="card p-6 rounded-xl floating reveal">
-            <h3 class="font-semibold text-white">Cloud & Migration</h3>
-            <p class="muted mt-2 text-sm">Azure, AWS, Google Cloud, hybrid deployments, backup & recovery, email migrations.</p>
-          </div>
-          <div class="card p-6 rounded-xl floating reveal">
-            <h3 class="font-semibold text-white">Cybersecurity</h3>
-            <p class="muted mt-2 text-sm">Endpoint protection, firewalls, security assessments, identity & access management.</p>
-          </div>
-          <div class="card p-6 rounded-xl floating reveal">
-            <h3 class="font-semibold text-white">Networking & Collaboration</h3>
-            <p class="muted mt-2 text-sm">LAN/WAN, SD-WAN, wireless, Microsoft Teams, Zoom, unified communications.</p>
-          </div>
-          <div class="card p-6 rounded-xl floating reveal">
-            <h3 class="font-semibold text-white">Surveillance & Access Control</h3>
-            <p class="muted mt-2 text-sm">CCTV, video analytics, biometric systems, visitor management.</p>
-          </div>
-          <div class="card p-6 rounded-xl floating reveal">
-            <h3 class="font-semibold text-white">Managed Services</h3>
-            <p class="muted mt-2 text-sm">24×7 monitoring, helpdesk, preventive maintenance, AMC, onsite support.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PARTNERS -->
-    <section id="partners" class="py-16">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-2xl font-bold brand text-center">Technology Ecosystem</h2>
-        <p class="text-center muted mt-2">We partner with leading global manufacturers and software providers.</p>
-
-        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="glass p-4 rounded-lg text-center">
-            <div class="font-semibold text-white">Hardware</div>
-            <div class="muted text-sm">Dell · HP · Lenovo · HPE</div>
-          </div>
-          <div class="glass p-4 rounded-lg text-center">
-            <div class="font-semibold text-white">Networking</div>
-            <div class="muted text-sm">Cisco · Aruba · Juniper</div>
-          </div>
-          <div class="glass p-4 rounded-lg text-center">
-            <div class="font-semibold text-white">Cloud</div>
-            <div class="muted text-sm">Microsoft · AWS · Google Cloud</div>
-          </div>
-          <div class="glass p-4 rounded-lg text-center">
-            <div class="font-semibold text-white">Security</div>
-            <div class="muted text-sm">Fortinet · Palo Alto · Sophos</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- INDUSTRIES -->
-    <section id="industries" class="py-16 bg-[linear-gradient(180deg,transparent,rgba(255,255,255,0.01))]">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-2xl font-bold brand text-center">Industries We Serve</h2>
-        <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          <div class="card p-4 rounded-lg text-center">
-            <div class="font-semibold">Corporate & Enterprise</div>
-          </div>
-          <div class="card p-4 rounded-lg text-center">
-            <div class="font-semibold">Education</div>
-          </div>
-          <div class="card p-4 rounded-lg text-center">
-            <div class="font-semibold">Healthcare</div>
-          </div>
-          <div class="card p-4 rounded-lg text-center">
-            <div class="font-semibold">Manufacturing</div>
-          </div>
-          <div class="card p-4 rounded-lg text-center">
-            <div class="font-semibold">Retail & Hospitality</div>
-          </div>
-          <div class="card p-4 rounded-lg text-center">
-            <div class="font-semibold">Banking & Finance</div>
-          </div>
-          <div class="card p-4 rounded-lg text-center">
-            <div class="font-semibold">Government</div>
-          </div>
-          <div class="card p-4 rounded-lg text-center">
-            <div class="font-semibold">Logistics & Transport</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="py-16">
-      <div class="max-w-5xl mx-auto px-4 grid md:grid-cols-2 gap-8">
-        <div class="glass p-8 rounded-xl">
-          <h3 class="text-xl font-semibold">Contact Us</h3>
-          <p class="muted mt-2">VERIFORM TECHNOLOGIES — Your Trusted Partner for IT Infrastructure & Business Technology Solutions</p>
-
-          <div class="mt-6 space-y-3 text-sm">
-            <div><strong class="text-white">Phone:</strong> +91 80954 58550</div>
-            <div><strong class="text-white">Email:</strong> info@vftech.in</div>
-            <div><strong class="text-white">Website:</strong> www.vftech.in</div>
-            <div><strong class="text-white">Office:</strong> Bengaluru, Karnataka, India</div>
-            <div class="mt-3 muted text-xs">Business Hours: Mon–Sat 9:00 AM – 6:30 PM</div>
-          </div>
-
-          <div class="mt-6 flex gap-3">
-            <a href="https://www.linkedin.com/company/veriform-technologies" target="_blank" class="glass p-3 rounded-lg">LinkedIn</a>
-            <a href="https://www.facebook.com/veriformtechnologies" target="_blank" class="glass p-3 rounded-lg">Facebook</a>
-            <a href="https://www.instagram.com/veriformtechnologies" target="_blank" class="glass p-3 rounded-lg">Instagram</a>
-          </div>
-        </div>
-
-        <form class="p-8 rounded-xl card" onsubmit="event.preventDefault(); alert('Thanks — we will contact you shortly.');">
-          <h3 class="text-xl font-semibold">Request a Consultation</h3>
-          <div class="mt-4 grid gap-3">
-            <input required class="p-3 rounded-md bg-transparent border border-white/6" placeholder="Full name" />
-            <input required type="email" class="p-3 rounded-md bg-transparent border border-white/6" placeholder="Email address" />
-            <input class="p-3 rounded-md bg-transparent border border-white/6" placeholder="Phone" />
-            <select class="p-3 rounded-md bg-transparent border border-white/6">
-              <option>Service of interest</option>
-              <option>Cloud & Migration</option>
-              <option>Cybersecurity</option>
-              <option>Procurement</option>
-              <option>Managed Services</option>
-            </select>
-            <textarea rows="4" class="p-3 rounded-md bg-transparent border border-white/6" placeholder="Brief message"></textarea>
-            <div class="flex items-center gap-3">
-              <button class="btn-primary px-4 py-2 rounded-md font-semibold">Send Request</button>
-              <button type="reset" class="glass px-4 py-2 rounded-md">Reset</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="py-8">
-    <div class="max-w-7xl mx-auto px-4 text-center muted text-sm">
-      <div class="mb-2">© <strong class="text-white">VeriForm Technologies</strong> — Solutions That Empower · Technology That Delivers</div>
-      <div>Website: <a href="https://www.vftech.in" class="accent">www.vftech.in</a> · Email: <a href="mailto:info@vftech.in" class="accent">info@vftech.in</a></div>
-    </div>
-  </footer>
-
-  <!-- Minimal JS for interactions and reveal animations -->
-  <script>
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
-    let mobileOpen = false;
-    menuBtn?.addEventListener('click', () => {
-      mobileOpen = !mobileOpen;
-      if (mobileOpen) {
-        const menu = document.createElement('div');
-        menu.id = 'mobileMenu';
-        menu.className = 'fixed inset-0 z-40 bg-black/60 flex';
-        menu.innerHTML = `
-          <div class="m-auto w-11/12 max-w-sm glass p-6 rounded-xl">
-            <div class="flex justify-between items-center mb-4">
-              <div class="font-semibold text-white">Menu</div>
-              <button id="closeMenu" class="p-2">✕</button>
-            </div>
-            <nav class="flex flex-col gap-3">
-              <a href="#about" class="text-white">About</a>
-              <a href="#services" class="text-white">Services</a>
-              <a href="#partners" class="text-white">Partners</a>
-              <a href="#industries" class="text-white">Industries</a>
-              <a href="#contact" class="text-white">Contact</a>
-            </nav>
-          </div>
-        `;
-        document.body.appendChild(menu);
-        document.getElementById('closeMenu').addEventListener('click', () => {
-          document.getElementById('mobileMenu')?.remove();
-          mobileOpen = false;
-        });
-      } else {
-        document.getElementById('mobileMenu')?.remove();
-      }
-    });
-
-    // reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('visible');
-      });
-    }, { threshold: 0.12 });
-    reveals.forEach(r => obs.observe(r));
-
-    // small accessibility: focus outline for keyboard users
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Tab') document.body.classList.add('show-focus');
-    });
-  </script>
-</body>
-</html>
